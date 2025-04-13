@@ -18,7 +18,7 @@ function Form({ data, roles = [], wachingMoviePackages = [], onSubmit }) {
                   email: data.email,
                   password: '',
                   repeatPassword: '',
-                  roleIds: data.Roles.map((item) => item.id),
+                  roleIds: data.roles.map((item) => item.id),
                   wachingMoviePackageIds: data.waching_movie_packages.map(
                       (item) => item.id
                   ),
@@ -32,6 +32,8 @@ function Form({ data, roles = [], wachingMoviePackages = [], onSubmit }) {
                   wachingMoviePackageIds: [],
               }
     );
+
+    console.log(data);
 
     const validateRules = useMemo(() => {
         if (data) {

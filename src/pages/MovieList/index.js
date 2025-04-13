@@ -78,6 +78,11 @@ function MovieList({ catalog, ...props }) {
 
     return (
         <main className={cx('wrapper', 'grid', 'wide')}>
+            <h2>
+                Website do sinh viên phát triển phục vụ cho mục đích học tập,
+                tất cả những chức năng thu phí đều không phải là thật. Xin đừng
+                đánh bản quyền ạ.
+            </h2>
             <div>
                 {data?.catalog.content_sections
                     .filter(
