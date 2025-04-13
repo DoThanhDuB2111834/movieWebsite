@@ -9,7 +9,11 @@ import { FaRegCircleUser } from 'react-icons/fa6';
 import { MdOutlineLogout } from 'react-icons/md';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faWallet } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCaretDown,
+    faLock,
+    faWallet,
+} from '@fortawesome/free-solid-svg-icons';
 
 import AuthService from '@/service/auth.service';
 
@@ -267,6 +271,24 @@ function Header() {
                                                     Thông tin cá nhân
                                                 </Button>
                                             </li>
+                                            {user?.role
+                                                ?.map((role) => role.name)
+                                                .includes('Admin') && (
+                                                <li>
+                                                    <Button
+                                                        to={
+                                                            config.routes.admin
+                                                                .dashboard
+                                                        }
+                                                        leftIcon={
+                                                            <FontAwesomeIcon
+                                                                icon={faLock}
+                                                            />
+                                                        }>
+                                                        Quản trị viên
+                                                    </Button>
+                                                </li>
+                                            )}
                                             <li>
                                                 <Button
                                                     leftIcon={

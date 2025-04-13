@@ -3,6 +3,7 @@ import { useLocation, useNavigationType } from 'react-router-dom';
 import { NProgress } from 'nprogress-v2';
 import 'nprogress/nprogress.css';
 import './progress.css';
+import config from '@/config';
 
 const NavigateProgress = () => {
     const location = useLocation();
@@ -12,7 +13,7 @@ const NavigateProgress = () => {
 
     useEffect(() => {
         // Giả sử bạn có kết nối WebSocket
-        const ws = new WebSocket('ws://localhost:3000/ws');
+        const ws = new WebSocket(`ws://${config.hostName}/ws`);
 
         ws.onopen = () => {
             // Kết nối WebSocket đã mở, kết thúc tiến trình nprogress

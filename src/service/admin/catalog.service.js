@@ -3,8 +3,6 @@ import createApiClient from '../api.service.js';
 
 class CatalogService {
     constructor(baseUrl = `${config.apiServer}/api/admin/catalog`) {
-        console.log(baseUrl);
-
         this.api = createApiClient(baseUrl);
     }
 
