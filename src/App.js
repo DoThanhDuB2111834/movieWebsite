@@ -5,7 +5,6 @@ import CatalogService from '@/service/admin/catalog.service';
 
 import DefaultLayout from './layouts/DefaultLayout';
 import { publicRoutes, privateRoutes } from '@/routes';
-import NavigateProgress from '@/components/UI/NavigateProgress';
 import PrivateRoute from './routes/components';
 import { ErrorWithStatusCode } from './pages/Error';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,7 +49,6 @@ function App() {
     return (
         <Router>
             <div className='App'>
-                <NavigateProgress />
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
