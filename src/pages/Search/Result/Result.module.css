@@ -13,6 +13,13 @@
     margin-top: 30px;
 }
 
+.error-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--dark);
+    min-height: 500px;
+}
+
 .movie-item-name {
     font-size: 0.9rem;
 }

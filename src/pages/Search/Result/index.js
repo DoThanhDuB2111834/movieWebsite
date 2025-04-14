@@ -57,8 +57,16 @@ function SearchResult() {
 
     console.log(data);
 
-    if (isLoading || isError) {
+    if (isLoading) {
         return <Loading />;
+    }
+
+    if (isError) {
+        return (
+            <div className={cx('error-message')}>
+                {data?.message ?? 'Không tìm thấy từ khóa'}
+            </div>
+        );
     }
 
     return (
