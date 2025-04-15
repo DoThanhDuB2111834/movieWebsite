@@ -86,3 +86,9 @@
     border-radius: 4px;
     background-color: var(--dark-gray);
 }
+
+@media (min-width: 1113px) {
+    .wrapper .eps-btn-wrapper {
+        flex: 0 0 0;
+    }
+}

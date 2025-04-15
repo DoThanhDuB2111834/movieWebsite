@@ -51,7 +51,11 @@ function WatchMovie() {
         null,
         [slugPhim]
     );
-    const { data: episodeData, isLoading: isEpisodeLoading } = useGetAPIData(
+    const {
+        data: episodeData,
+        isLoading: isEpisodeLoading,
+        isError: isEpisodeError,
+    } = useGetAPIData(
         async () => {
             if (data) {
                 return await MovieSerice.getEpisode(data.movie.id, slugTap);
@@ -176,13 +180,15 @@ function WatchMovie() {
             }
 
             epsElement.push(
-                <div style={{ padding: '0 5px', marginBottom: '10px' }}>
+                <div
+                    className={cx('c-4', 'eps-btn-wrapper')}
+                    style={{ padding: '0 5px', marginBottom: '15px' }}
+                    key={episode?.id}>
                     <Button
                         episodeBtn
                         classNames={cx('eps-btn')}
                         vipLabel={episode?.waching_movie_packages?.length > 0}
                         grey={slugTap === slugTapLocal}
-                        key={episode?.id}
                         dark
                         to={config.routes.watchMovie.withParam(
                             slugPhim,
@@ -197,11 +203,11 @@ function WatchMovie() {
         return epsElement;
     };
 
-    if (isLoadingMoive || isRelatedMovieLoading || isEpisodeLoading) {
+    if (isLoadingMoive || isEpisodeLoading) {
         return <Loading />;
     }
 
-    if (isErrorMovie) {
+    if (isErrorMovie || isEpisodeError) {
         return <div>error</div>;
     }
 

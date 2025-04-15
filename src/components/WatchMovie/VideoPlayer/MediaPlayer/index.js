@@ -258,7 +258,7 @@ function MediaPlayer() {
     }, [movie, adsIsPlaying, adsUrls]);
 
     const togglePlay = () => {
-        if (isLoading) return;
+        if (isLoading || window.innerWidth <= 500) return;
         if (videoRef.current.paused) {
             videoRef.current.play();
         } else {
