@@ -1,4 +1,5 @@
 import { useCallback, useContext, useEffect, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 import classNames from 'classnames/bind';
 import Hls from 'hls.js';
 
@@ -258,7 +259,13 @@ function MediaPlayer() {
     }, [movie, adsIsPlaying, adsUrls]);
 
     const togglePlay = () => {
-        if (isLoading || window.innerWidth <= 500) return;
+        if (
+            isLoading ||
+            window.innerWidth <= 500 ||
+            (isMobile &&
+                window.screen.orientation.type.includes('landscape-primary'))
+        )
+            return;
         if (videoRef.current.paused) {
             videoRef.current.play();
         } else {

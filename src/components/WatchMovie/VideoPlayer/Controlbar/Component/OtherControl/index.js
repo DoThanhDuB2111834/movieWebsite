@@ -1,5 +1,6 @@
 /* eslint-disable eqeqeq */
 import { forwardRef, memo, useContext, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -72,12 +73,28 @@ function OtherControl() {
         dispatch(setPlaying(!playing));
     };
 
-    const toggleFullscreenHandle = () => {
+    const toggleFullscreenHandle = async () => {
         if (!document.fullscreenElement) {
             wrapperRef.current.requestFullscreen({ navigationUI: 'hide' });
+
+            if (
+                window.screen.orientation &&
+                window.screen.orientation.lock &&
+                isMobile
+            ) {
+                await window.screen.orientation.lock('landscape');
+            }
         } else {
             document.exitFullscreen();
             videoRef.current.style.objectFit = 'contain';
+
+            if (
+                isMobile &&
+                window.screen.orientation &&
+                window.screen.orientation.unlock
+            ) {
+                window.screen.orientation.unlock(); // Hoặc lock("portrait") nếu muốn chắc chắn
+            }
         }
         dispatch(toggleFullscreen());
     };
