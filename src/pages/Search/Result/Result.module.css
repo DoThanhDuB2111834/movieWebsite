@@ -20,6 +20,23 @@
     min-height: 500px;
 }
 
+.movie-item {
+    position: relative;
+}
+
+.voiceover-label {
+    display: none;
+    position: absolute;
+    background: linear-gradient(114.88deg, #fe592a 0%, #e93013 97.15%);
+    border-radius: 10px;
+    padding: 0 10px;
+    top: 15px;
+    right: 19px;
+    font-size: 0.7rem;
+    z-index: 4;
+    opacity: 0.8;
+}
+
 .movie-item-name {
     font-size: 0.9rem;
 }

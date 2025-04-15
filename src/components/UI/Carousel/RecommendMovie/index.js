@@ -57,6 +57,18 @@ function RecommendMovieCarousel({
             <Slider {...settings}>
                 {items.map((value, index) => (
                     <div key={index} className={cx('movie-item')}>
+                        <span
+                            className={cx('voiceover-label')}
+                            style={{
+                                display:
+                                    (value?.language.includes('Lồng Tiếng') ||
+                                        value?.language.includes(
+                                            'Thuyết Minh'
+                                        )) &&
+                                    'block',
+                            }}>
+                            {value?.language}
+                        </span>
                         <Image
                             type='recommend-movie-image'
                             src={value.poster_url}

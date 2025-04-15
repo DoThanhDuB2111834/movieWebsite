@@ -81,6 +81,18 @@ function Carousel({
             <Slider {...settings}>
                 {items.map((item, index) => (
                     <div key={index} className={cx('movie-item')}>
+                        <span
+                            className={cx('voiceover-label')}
+                            style={{
+                                display:
+                                    (item?.language.includes('Lồng Tiếng') ||
+                                        item?.language.includes(
+                                            'Thuyết Minh'
+                                        )) &&
+                                    'block',
+                            }}>
+                            {item?.language}
+                        </span>
                         {item.waching_movie_packages?.length > 0 && (
                             <div className={cx('vip-label')}>VIP</div>
                         )}

@@ -97,6 +97,20 @@ function SearchResult() {
                         <div
                             key={index}
                             className={cx('movie-item', 'col', 'c-6', 'l-3')}>
+                            <span
+                                className={cx('voiceover-label')}
+                                style={{
+                                    display:
+                                        (item?.language.includes(
+                                            'Lồng Tiếng'
+                                        ) ||
+                                            item?.language.includes(
+                                                'Thuyết Minh'
+                                            )) &&
+                                        'block',
+                                }}>
+                                {item?.language}
+                            </span>
                             <Button
                                 image
                                 to={config.routes.watchMovie.withParam(
