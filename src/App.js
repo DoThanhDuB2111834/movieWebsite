@@ -43,7 +43,9 @@ function App() {
     }, [catalogState, dispatch]);
 
     if (isLoading) {
-        return null;
+        return (
+            <div>Đang tải dữ liệu, quá trình lần đầu tải có thể hơi lâu...</div>
+        );
     }
 
     return (
